@@ -2,7 +2,7 @@ import tensorflow as tf
 
 
 class MLP:
-    def __init__(self, n_input, n_hidden, n_output, lr):
+    def __init__(self, n_input, n_hidden, n_output, lr=0.01):
         self.n_input = n_input
         self.n_hidden = n_hidden
         self.n_output = n_output
@@ -11,8 +11,8 @@ class MLP:
         self._build()
 
     def _data(self):
-        self.x = tf.placeholder(dtype=tf.float32, shape=[None, self.n_input])
-        self.y = tf.placeholder(dtype=tf.int32, shape=[None, self.n_output])
+        self.x = tf.placeholder(dtype=tf.float32, shape=[None, self.n_input], name='x')
+        self.y = tf.placeholder(dtype=tf.int32, shape=[None, self.n_output], name='y')
         self.w1 = tf.get_variable('weight1', shape=[self.n_input, self.n_hidden],
                                   initializer=tf.truncated_normal_initializer(mean=0, stddev=1))
         self.b1 = tf.get_variable('bias1', shape=[self.n_hidden],
@@ -43,4 +43,10 @@ class MLP:
         self._loss()
         self._optimizer()
         self._eval()
+        self._predict()
+
+    def _predict(self):
+        pred = tf.nn.softmax(self.logits)
+        predict_result = tf.argmax(pred, 1)
+        tf.add_to_collection('predict_result', predict_result)
 
