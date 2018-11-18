@@ -1,6 +1,6 @@
 import numpy as np
 
-ratio = 0.8
+ratio = 0.9
 normalize_paras_file = 'paras/normalize_para.npy'
 
 
@@ -64,6 +64,9 @@ class Data:
 
     def get_test_data(self):
         return self.test
+    
+    def get_test_data_size(self):
+        return self.test_size
 
     def get_data_size(self):
         return self.data_size
@@ -76,6 +79,3 @@ if __name__ == '__main__':
     print(data.get_data_size())
     data1 = Data(d_p, l_p, False)
     print(data1.get_data_size())
-    # for i in range(1000):
-    #     a, b = data.next_batch(128)
-    #     print(a.shape, b.shape)

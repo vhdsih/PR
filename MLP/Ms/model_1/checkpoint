@@ -1,0 +1,6 @@
+model_checkpoint_path: "mlp420-0.978500--420"
+all_model_checkpoint_paths: "mlp138-0.971500--138"
+all_model_checkpoint_paths: "mlp159-0.973500--159"
+all_model_checkpoint_paths: "mlp227-0.974000--227"
+all_model_checkpoint_paths: "mlp361-0.975000--361"
+all_model_checkpoint_paths: "mlp420-0.978500--420"
